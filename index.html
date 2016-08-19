@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flappy Bird</title>
+</head>
+
+<body>
+  <canvas id="cvs" width="800" height="600"></canvas>
+  <script src="assets/vendor/seajs-3.0.0/dist/sea.js"></script>
+  <script>
+    // 配置 base 基础路径，后面的顶级标识就可以基于 base 路径指定了
+    seajs.config({
+      base: './assets/'
+    });
+    seajs.use('js/main');
+  </script>
+</body>
+
+</html>

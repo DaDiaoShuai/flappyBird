@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+  /**
+   * 如何保证异步代码的执行顺序
+   * 如何拿到异步执行的结果
+   * 核心就是 JavaScript 中的 函数 既可以 作为参数进行传递，还可以 作为返回值进行 返回 高阶函数
+   */
+
+    function eat(callback) {
+      setTimeout(function() {
+        // 只有等 下面的 “吃完饭了” 输出之后，才可以做之后的事情
+        console.log('吃完饭了')
+
+        // 在异步代码中传递结果，就是通过 回调函数的 方式传递执行的结果
+        callback({
+          food: '小豆包',
+          drink: '可乐'
+        })
+        
+      }, 1000)
+    }
+
+    function sleep() {
+      console.log('睡觉觉')
+    }
+
+    function hitDouDou(argument) {
+      console.log('打豆豆')
+    }
+
+    // eat(sleep)
+
+    eat(function (pack) {
+      // sleep()
+      console.log('吃饭之后的打包的东西：')
+      console.log(pack)
+      hitDouDou()
+    })
+
+    // sleep()
+
+  </script>
+</body>
+
+</html>
